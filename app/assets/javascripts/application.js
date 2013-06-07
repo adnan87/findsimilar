@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+//************
+//Workaround for the FB ... Change in Session Redirect Behavior
+//Ref: https://groups.google.com/forum/#!msg/rubyonrails-talk/NTHkLAyq_7I/5zRNJZvd3mEJ
+if (window.location.href.indexOf('#_=_') > 0) { 
+	window.location = window.location.href.replace(/#.*/, '');
+}
+//End of workaround
+//************
