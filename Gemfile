@@ -25,6 +25,8 @@ end
 
 gem 'jquery-rails'
 
+#for facebook integration with omniauth
+gem 'omniauth-facebook'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
