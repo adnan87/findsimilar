@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
   def authenticate_user
     
     if (!current_user)
-      #redirect_to "/auth/facebook"
+      redirect_to "/auth/facebook"
     end
   end
 end
