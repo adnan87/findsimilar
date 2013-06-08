@@ -59,5 +59,8 @@ Findsimilar::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
   
+  match 'questions', to: 'questions#index'
+  
+  match '/post', to: 'welcome#posts'
   root :to => "welcome#index"
 end

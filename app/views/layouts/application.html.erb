@@ -32,11 +32,12 @@
 
 							<aside class="widget widget_search group">
 								<div id="user_nav">
-										<% if current_user %>
+									<% if current_user %>
 									<h1 style="font-size: 1.3em; margin: 0px">Signed in as <strong><%= current_user.name %></strong>!</h1>
-									<%= link_to "Sign out", signout_path, id: "sign_out", :style => "font-weight:bold; font-size: 1.2em" %>
+									<h1 style="font-size: 1.4em; margin: 0px; text-transform: uppercase"><a href="/questions" style="font-weight: bold">Post your question</a> | 
+									<%= link_to "Sign out", signout_path, id: "sign_out" %></h1>
 									<% else %>
-										<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", :style => "font-weight:bold; font-size: 1.4em" %>
+										<%= link_to "Sign in with Facebook & Start posting", "/auth/facebook", id: "sign_in", :style => "font-weight:bold; font-size: 1.4em" %>
 									<% end %>
 								</div>
 							</aside>
@@ -49,22 +50,24 @@
 						<hgroup class="logo">
 							<h1><a href="index.html"><img src="/assets/find-similar-logo.png" alt=""></a></h1>
 						</hgroup>
-
+					
 						<div class="header-wgt group">
 							<aside class="widget group widget_ci_social_widget">
 								<a href="#" class="icn twitter">Twitter</a><a href="#" class="icn facebook">Facebook</a><a href="#" class="icn pinterest">Pinterest</a><a href="#" class="icn youtube">Youtube</a>
 							</aside>
-
+							
 							<aside class="widget widget_search group">
 								<div id="user_nav" style="text-align:right">
 									<% if current_user %>
 									<h1 style="font-size: 1.3em; margin: 0px">Signed in as <strong><%= current_user.name %></strong>!</h1>
-									<%= link_to "Sign out", signout_path, id: "sign_out", :style => "font-weight:bold; font-size: 1.2em" %>
+									<h1 style="font-size: 1.4em; margin: 0px; text-transform: uppercase"><a href="/questions" style="font-weight: bold">Post your question</a> | 
+									<%= link_to "Sign out", signout_path, id: "sign_out" %></h1>
 									<% else %>
-										<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", :style => "font-weight:bold; font-size: 1.4em" %>
+										<%= link_to "Sign in with Facebook & Start posting", "/auth/facebook", id: "sign_in", :style => "font-weight:bold; font-size: 1.4em" %>
 									<% end %>
 								</div>
 							</aside>
+							
 						</div><!-- .header-wgt -->
 					</div><!-- .wrap < #header -->
 				</div><!-- #site-head -->

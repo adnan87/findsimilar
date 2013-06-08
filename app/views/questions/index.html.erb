@@ -1,0 +1,104 @@
+<div class="inner-container half group">
+	<div class="box-hold group">
+		<article class="post-6 page type-page status-publish hentry entry box" id="post-6">
+			<div class="entry-intro">
+				<h1>What are you looking for?</h1>
+			</div>
+			<!-- .entry-intro -->
+			<script>
+				function readURL(input) {
+					if (input.files && input.files[0]) {
+						var reader = new FileReader();
+
+						reader.onload = function(e) {
+							$('#img_prev').attr('src', e.target.result).width(256);
+							//.height(256);
+						};
+
+						reader.readAsDataURL(input.files[0]);
+					}
+				}
+
+				function showPreview(ele) {
+
+					$('#img_prev').attr('src', ele.value).width(256);
+					;
+					// for IE
+
+					if (ele.files && ele.files[0]) {
+
+						var reader = new FileReader();
+
+						reader.onload = function(e) {
+							$('#img_prev').attr('src', e.target.result).width(256);
+							;
+						}
+
+						reader.readAsDataURL(ele.files[0]);
+
+					}
+
+				}
+
+			</script>
+			</script>
+			<div class="entry-content group">
+
+				<p>
+					Post your question and get people to find what you are looking for
+				</p>
+
+				<form id="contactform" action="/">
+					<fieldset>
+						<p>
+
+							<div style="background: url('/assets/upload-256x256.png'); width: 256px; height: 147px; overflow: hidden;margin: 0 auto;">
+								<input type="file" id="file-upload" name="file-upload" style="opacity:0;-moz-opacity:0 ;filter:alpha(opacity: 0); width: 256px; height: 147px; cursor: pointer" onchange="showPreview(this);"  >
+							</div>
+
+						</p>
+					</fieldset>
+					<fieldset>
+						<p>
+							<div style="margin: 0 auto;width: 256px"><img id="img_prev" src="/assets/256x256-preview.png" alt="your image" />
+							</div>
+						</p>
+					</fieldset>
+					<fieldset class="group">
+						<p>
+							<input type="text" title="Your Name">
+						</p>
+						<p>
+							<input type="text" title="Your E-mail">
+						</p>
+					</fieldset>
+
+					<fieldset>
+						<p>
+							<input type="text" title="Reason for contact">
+						</p>
+					</fieldset>
+
+					<fieldset>
+						<p>
+							<textarea cols="30" rows="4" title="Your Comment"></textarea>
+						</p>
+					</fieldset>
+
+					<button type="submit">
+						Submit
+					</button>
+
+				</form>
+
+			</div>
+
+			<div class="social-share group">
+
+			</div>
+
+		</article>
+	</div>
+	<!-- .box-hold -->
+
+</div>
