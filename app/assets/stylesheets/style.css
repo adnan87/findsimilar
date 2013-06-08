@@ -1010,7 +1010,7 @@ Comments (everything related to the comments section)
 
 #commentform button[type=submit],
 .gform_wrapper input[type=submit],
-#contactform button[type=submit] {
+.questionform input[type=submit] {
   color: #fff;
   float: right;
   font: inherit;
@@ -1032,7 +1032,7 @@ Comments (everything related to the comments section)
 }
 
 #commentform button[type=submit]:active, .gform_wrapper input[type=submit]:active,
-#contactform input[type=submit]:active{
+.questionform input[type=submit]:active{
   position: relative;
   top: 1px;
   -moz-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.15) inset;
@@ -1754,12 +1754,12 @@ Alternative Template (Content on the left)
 
 /* Contact Form */
 
-#contactform input[type=text],
-#contactform textarea {
+.questionform input[type=text],
+.questionform textarea {
   width: 97%;
 }
 
-#contactform p {
+.questionform p {
 margin-bottom: 15px;
  }
 /*

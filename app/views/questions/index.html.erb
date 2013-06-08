@@ -1,104 +1,38 @@
-<div class="inner-container half group">
-	<div class="box-hold group">
-		<article class="post-6 page type-page status-publish hentry entry box" id="post-6">
-			<div class="entry-intro">
-				<h1>What are you looking for?</h1>
-			</div>
-			<!-- .entry-intro -->
-			<script>
-				function readURL(input) {
-					if (input.files && input.files[0]) {
-						var reader = new FileReader();
+<div id="entry-listing" class="group">
+	<article class="entry box isotope-item" id="intro">
+		<div class="entry-content-cnt">
+			<aside class="widget widget_ci_about_widget group">
+				<h3 class="widget-title">What is find similiar??</h3>
 
-						reader.onload = function(e) {
-							$('#img_prev').attr('src', e.target.result).width(256);
-							//.height(256);
-						};
+				<div class="widget_about group">
+					<!--<img alt="about me" class="alignleft" src="images/dummy/me.jpg"> -->
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem quam, gravida elementum nibh ut, scelerisque congue lectus. Sed dapibus elementum diam. Fusce malesuada iaculis velit, sollicitudin posuere elit vehicula vitae. Duis ut placerat erat, sed auctor est. Nulla lacinia magna sed sagittis malesuada. Praesent ac facilisis nisl, a semper odio. Mauris accumsan, risus et placerat rutrum, leo tellus dignissim metus, non mattis tortor nisi luctus metus.
+					</p>
 
-						reader.readAsDataURL(input.files[0]);
-					}
-				}
+					<p>
+						Try us out!
+					</p>
+				</div>
+			</aside>
 
-				function showPreview(ele) {
+			<aside class="widget widget_ci_twitter_widget group">
+				<h3 class="widget-title">Recent tweets</h3>
 
-					$('#img_prev').attr('src', ele.value);
-					;
-					// for IE
+				<div id="twitter_update_list">
+					<ul>
+						<li>
+							<span>@<a href="#">handle</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere tortor :)</span><a href="#" class="twitter-time">about 6 hours ago</a>
+						</li>
 
-					if (ele.files && ele.files[0]) {
-
-						var reader = new FileReader();
-
-						reader.onload = function(e) {
-							$('#img_prev').attr('src', e.target.result).width(256);
-							;
-						}
-
-						reader.readAsDataURL(ele.files[0]);
-
-					}
-
-				}
-
-			</script>
-			</script>
-			<div class="entry-content group">
-
-				<p>
-					Post your question and get people to find what you are looking for
-				</p>
-
-				<form id="contactform" action="/">
-					<fieldset>
-						<p>
-
-							<div style="background: url('/assets/upload-256x256.png'); width: 256px; height: 147px; overflow: hidden;margin: 0 auto;">
-								<input type="file" id="file-upload" name="file-upload" style="opacity:0;-moz-opacity:0 ;filter:alpha(opacity: 0); width: 256px; height: 147px; cursor: pointer" onchange="showPreview(this);"  >
-							</div>
-
-						</p>
-					</fieldset>
-					<fieldset>
-						<p>
-							<div style="margin: 0 auto;width: 256px"><img id="img_prev" src="/assets/256x256-preview.png" alt="your image" />
-							</div>
-						</p>
-					</fieldset>
-					<fieldset class="group">
-						<p>
-							<input type="text" title="Your Name">
-						</p>
-						<p>
-							<input type="text" title="Your E-mail">
-						</p>
-					</fieldset>
-
-					<fieldset>
-						<p>
-							<input type="text" title="Reason for contact">
-						</p>
-					</fieldset>
-
-					<fieldset>
-						<p>
-							<textarea cols="30" rows="4" title="Your Comment"></textarea>
-						</p>
-					</fieldset>
-
-					<button type="submit">
-						Submit
-					</button>
-
-				</form>
-
-			</div>
-
-			<div class="social-share group">
-
-			</div>
-
-		</article>
-	</div>
-	<!-- .box-hold -->
-
+						<li>
+							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere tortor. <a href="#">http://www.example.com</a></span><a href="#" class="twitter-time">about 11 hours ago</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</article><!-- #intro -->
+	
+	<%= render :partial => 'questionlist' %>
 </div>

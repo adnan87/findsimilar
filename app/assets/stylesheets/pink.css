@@ -57,7 +57,7 @@ p a:hover {
 }
 
 #commentform button[type=submit], .gform_wrapper input[type=submit],
-#contactform button[type=submit]{
+.questionform input[type=submit]{
   border: 1px solid #a67777; /* inner stroke */
   background-color: #e59f9f; /* layer fill content */
 
