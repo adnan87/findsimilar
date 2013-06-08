@@ -66,6 +66,6 @@ Findsimilar::Application.routes.draw do
   end
   
   
-  match '/post', to: 'welcome#posts'
+  match '/view/:id', to: 'welcome#view'
   root :to => "welcome#index"
 end

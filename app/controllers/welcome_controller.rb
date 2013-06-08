@@ -10,7 +10,12 @@ class WelcomeController < ApplicationController
   
   end
   
-  def posts
-    
+  def view
+     @question = Question.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @question }
+    end
   end
 end

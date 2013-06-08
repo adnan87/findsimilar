@@ -539,10 +539,14 @@ Content
 }
 
 #entry-listing .entry h1 {
-  font-size: 1.538461538461538em;
-  margin-bottom: 12px;
+  font-size: 1.638461538461538em;
+  margin-bottom: 5px;
 }
 
+#entry-listing .entry h2 {
+  font-size: 1.438461538461538em;
+  margin-bottom: 5px;
+}
 .entry img {
   max-width: 100%;
 

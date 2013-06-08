@@ -3,12 +3,12 @@
 
 	<div class="entry-content-cnt">
 		<div class="entry-content">
-			<a href="#" class="thumb" title="<%= question.question %>"><img src="<%= question.image.thumb %>" class="attachment-ci_listing_thumb" alt="<%= question.question %>" title="<%= question.question %>"></a>
+			<a href="/view/<%= question.id %>" class="thumb" title="<%= question.question %>"><img src="<%= question.image.thumb %>" class="attachment-ci_listing_thumb" alt="<%= question.question %>" title="<%= question.question %>"></a>
 		</div>
 	</div>
 
 	<div class="entry-desc">
-		<h1><a href="#" title="<%= question.question %>"><%= question.question %></a></h1>
+		<h1><a href="/view/<%= question.id %>" title="<%= question.question %>"><%= question.question %></a></h1>
 		<p style="font-style: italic; text-align: right;margin-bottom: 2px">Posted by <%= question.user.name %></p>
 		<h2 style="text-align: right"><a href="#" title="">Price willing <%= number_to_currency(question.price) %></a></h2>
 		<div class="entry-meta group">

@@ -34,7 +34,7 @@
 								<div id="user_nav">
 									<% if current_user %>
 									<h1 style="font-size: 1.3em; margin: 0px">Signed in as <strong><%= current_user.name %></strong>!</h1>
-									<h1 style="font-size: 1.4em; margin: 0px; text-transform: uppercase"><a href="/questions" style="font-weight: bold">Post your question</a> | 
+									<h1 style="font-size: 1.4em; margin: 0px; text-transform: uppercase"><a href="/questions/new" style="font-weight: bold">Post your question</a> | 
 									<%= link_to "Sign out", signout_path, id: "sign_out" %></h1>
 									<% else %>
 										<%= link_to "Sign in with Facebook & Start posting", "/auth/facebook", id: "sign_in", :style => "font-weight:bold; font-size: 1.4em" %>
@@ -48,7 +48,7 @@
 				<div id="site-head">
 					<div class="wrap group">
 						<hgroup class="logo">
-							<h1><a href="index.html"><img src="/assets/find-similar-logo.png" alt=""></a></h1>
+							<h1><a href="/"><img src="/assets/find-similar-logo.png" alt=""></a></h1>
 						</hgroup>
 					
 						<div class="header-wgt group">
@@ -60,7 +60,7 @@
 								<div id="user_nav" style="text-align:right">
 									<% if current_user %>
 									<h1 style="font-size: 1.3em; margin: 0px">Signed in as <strong><%= current_user.name %></strong>!</h1>
-									<h1 style="font-size: 1.4em; margin: 0px; text-transform: uppercase"><a href="/questions" style="font-weight: bold">Post your question</a> | 
+									<h1 style="font-size: 1.4em; margin: 0px; text-transform: uppercase"><a href="/questions/new" style="font-weight: bold">Post your question</a> | 
 									<%= link_to "Sign out", signout_path, id: "sign_out" %></h1>
 									<% else %>
 										<%= link_to "Sign in with Facebook & Start posting", "/auth/facebook", id: "sign_in", :style => "font-weight:bold; font-size: 1.4em" %>
