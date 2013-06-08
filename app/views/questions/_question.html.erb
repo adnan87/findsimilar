@@ -5,7 +5,7 @@
 	<p>
 		<!--<div style="background: url('/assets/upload-256x256.png'); width: 256px; height: 147px; overflow: hidden;margin: 0 auto;" onclick="$('question_image').click();"> -->
 			<img id="img_upload_image" src="/assets/upload-256x256.png/" style="cursor: pointer"/>
-			<%= f.file_field :image, :style => "opacity:0;-moz-opacity:0 ;filter:alpha(opacity: 0);", :onchange => "showPreview(this);"  %>
+			<%= f.file_field :image, :accept=> "image/*",  :style => "opacity:0;-moz-opacity:0 ;filter:alpha(opacity: 0);", :onchange => "showPreview(this);"  %>
 		<!-- </div> -->
 	</p>
 	</div>

@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(params[:question])
-    @question.user_id = 1
+    @question.user_id = session[:user_id]
     respond_to do |format|
       if @question.save
         format.html { redirect_to root_url, notice: 'Question was successfully posted.' }
