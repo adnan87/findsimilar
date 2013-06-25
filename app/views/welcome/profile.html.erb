@@ -1,0 +1,46 @@
+<div id="entry-listing" class="group">
+	<article class="entry box isotope-item" id="intro">
+		<div class="entry-content-cnt">
+			<aside class="widget widget_ci_about_widget group">
+				<div class="widget_about group">
+					<!--<img alt="about me" class="alignleft" src="images/dummy/me.jpg"> -->
+					<p>
+						<%= image_tag current_user.image,:class=>'image-width' %>
+						<h5 class="widget-title" style="margin-top: -23px;">Hi!! <%= current_user.name %></h5>
+					</p>
+
+				</div>
+
+			</aside>
+
+			<aside class="widget widget_ci_twitter_widget group">
+				<h5 class="widget-title" style="margin-top: -23px;">Total Points: <%#= sequence.reel_number.presence ? sequence.reel_number : "-" %>
+					<%= current_user.points.presence ? current_user.points : "0" %></h5>
+
+				<div id="twitter_update_list">
+					<ul>
+						<li>
+							<span> Total Questions: <%= @questions.count.presence ? @questions.count : "0" %></span>
+							
+						</li>
+
+						<li>
+							<span> Total Answers: <%= @answers.count.presence ? @answers.count : "0" %></span>
+							
+						</li>
+						<li>
+							<span> <h5>Accepted Answers: <%= @accepted_answers.count.presence ? @accepted_answers.count : "0" %></h5></span>
+							
+						</li>
+						<li>
+							<span> <h4>Recent Answers </h4></span>
+							
+						</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</article><!-- #intro -->
+	
+	<%= render :partial => 'questionlist' %>
+</div>

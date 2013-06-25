@@ -2,7 +2,6 @@
 	<div class="box-hold group">
 		<article class="entry box format-image">
 			<div class="entry-intro">
-				
 					<h1><%= @question.question %></h1><span class="entry-meta">Posted by <strong>
 						<vmasto>
 							<%= @question.user.name%>
@@ -12,9 +11,9 @@
 						</time></span>
 					<a class="single-heart-this" href="#" title="Love this."> <span class="heart-icon"></span> <span class="heart-no">16</span></a>
 					<!-- .entry-intro -->
-				
+			
 			</div>
-
+			
 			<figure class="entry-image">
 				<a href="#" data-lightbox="fancybox"><img src="<%= @question.image.medium %>" alt="<%= @question.question %>"></a>
 			</figure>
@@ -29,110 +28,22 @@
 			</div>
 			<div class="social-share"></div>
 		</article>
-	</div><!-- .box-hold -->
 
+	</div><!-- .box-hold -->
 	<div class="box-hold">
+		<% if(@question.user_id != session[:user_id]) %>
 		<div class="box comment-form">
 			<div class="box-content">
-				<h3>Post your comment</h3>
-
-				<form id="commentform" class="group" action="/">
-					<fieldset class="group">
-						<p>
-							<input type="text" title="Your Name">
-						</p>
-
-						<p>
-							<input type="text" title="Your E-mail">
-						</p>
-					</fieldset>
-
-					<fieldset>
-						<p>
-							<textarea cols="30" rows="4" title="Your Comment"></textarea>
-						</p>
-					</fieldset>
-					<button type="submit">
-						Submit
-					</button>
-				</form>
-			</div>
-		</div>
-
-		<div class="box post-comments">
-			<div class="box-content">
-				<h3>42 Comments</h3>
-
-				<ol id="comment-list" class="group">
-					<li class="comment">
-						<span class="comment-meta">Posted by <strong>vmasto</strong>, at
-							<time datetime="2012-08-07">
-								July 7th, 2012
-							</time> &mdash; <a class="comment-reply-link" href="#commentform">Reply</a></span>
-
-						<div class="comment-text group">
-							<img class="avatar" src="/assets/avatar.png" alt="">
-
-							<div class="comment-copy">
-								<p>
-									First, I believe that this nation should commit itself to achieving the goal, before this decade is out, of landing a man on the moon and returning him safely to the earth. No single space project in this period will be more impressive to mankind, or more important for the long-range exploration.
-								</p>
-							</div>
-						</div>
-					</li>
-
-					<li class="comment">
-						<span class="comment-meta">Posted by <strong>vmasto</strong>, at
-							<time datetime="2012-08-07">
-								July 7th, 2012
-							</time> &mdash; <a class="comment-reply-link" href="#commentform">Reply</a></span>
-
-						<div class="comment-text group">
-							<img class="avatar" src="/assets/avatar.png" alt="">
-
-							<div class="comment-copy">
-								<p>
-									First, I believe that this nation should commit itself to achieving the goal, before this decade is out, of landing a man on the moon and returning him safely to the earth. No single space project in this period will be more impressive to mankind, or more important for the long-range exploration.
-								</p>
-							</div>
-						</div>
-					</li>
-
-					<li class="comment">
-						<span class="comment-meta">Posted by <strong>vmasto</strong>, at
-							<time datetime="2012-08-07">
-								July 7th, 2012
-							</time> &mdash; <a class="comment-reply-link" href="#commentform">Reply</a></span>
-
-						<div class="comment-text group">
-							<img class="avatar" src="/assets/avatar.png" alt="">
-
-							<div class="comment-copy">
-								<p>
-									First, I believe that this nation should commit itself to achieving the goal, before this decade is out, of landing a man on the moon and returning him safely to the earth. No single space project in this period will be more impressive to mankind, or more important for the long-range exploration.
-								</p>
-							</div>
-						</div>
-					</li>
-
-					<li class="comment">
-						<span class="comment-meta">Posted by <strong>vmasto</strong>, at
-							<time datetime="2012-08-07">
-								July 7th, 2012
-							</time> &mdash; <a class="comment-reply-link" href="#commentform">Reply</a></span>
-
-						<div class="comment-text group">
-							<img class="avatar" src="/assets/avatar.png" alt="">
-
-							<div class="comment-copy">
-								<p>
-									First, I believe that this nation should commit itself to achieving the goal, before this decade is out, of landing a man on the moon and returning him safely to the earth. No single space project in this period will be more impressive to mankind, or more important for the long-range exploration.
-								</p>
-							</div>
-						</div>
-					</li>
-				</ol><a class="load-more-comments" href="#">View 38 More Comments...</a>
-			</div>
-		</div>
-	</div><!-- .box-hold -->
+ 	
+            <%= render :partial => "answers/comment" %>        
+			
+			</div>	
+	</div>
+	<%end %>
+	
+<div class="box post-comments">
+  <div class="box-content">
+    <h1>Comments</h1>
+      <%= render :partial => "commentlist" %>
+  </div>
 </div>

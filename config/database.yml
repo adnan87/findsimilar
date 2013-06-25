@@ -8,8 +8,8 @@ development:
   encoding: unicode
   database: findsimilar_dev
   pool: 5
-  username: sabarinathiyer
-  password:
+  username: adnan
+  password: 12345678
   host: localhost
   port: 5432
 
@@ -17,8 +17,8 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: postgresql
+  database: db/test
   pool: 5
   timeout: 5000
 
@@ -27,7 +27,7 @@ production:
   encoding: unicode
   pool: 5
   database: dc1l35d4esajdg
-  username: sempokthbhmdfd
-  password: 6tfTTvu90hkTcydv46BO7Fkw6L
+  username: adnan
+  password: 12345678
   host: ec2-23-21-130-168.compute-1.amazonaws.com
   port: 5432

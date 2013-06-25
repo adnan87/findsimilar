@@ -23,7 +23,7 @@
 
 		<div id="container">
 			<header id="header">
-				<div class="pre-head show-on-mobile">
+				<!-- <div class="pre-head show-on-mobile">
 					<div class="wrap group">
 						<div class="pre-head-wgt group">
 							<aside class="widget group widget_ci_social_widget">
@@ -32,16 +32,17 @@
 
 							<aside class="widget widget_search group">
 								<div id="user_nav">
-									<% if current_user %>
+									<%# if current_user %>
 									<h1 style="font-size: 1.3em; margin: 0px">Signed in as <strong><%= current_user.name %></strong>!</h1>
-									<h1 style="font-size: 1.4em; margin: 0px; text-transform: uppercase"><a href="/questions/new" style="font-weight: bold">Post your question</a> | 
-									<%= link_to "Sign out", signout_path, id: "sign_out" %></h1>
-									<% else %>
-										<%= link_to "Sign in with Facebook & Start posting", "/auth/facebook", id: "sign_in", :style => "font-weight:bold; font-size: 1.4em" %>
-									<% end %>
+									<h1 style="font-size: 1.4em; margin: 0px; text-transform: uppercase"><a href="/questions/new" style="font-weight: bold">Post your question</a> |
+
+									<%#= link_to "Sign out", signout_path, id: "sign_out" %></h1>
+									<%# else %>
+										<%#= link_to "Sign in with Facebook & Start posting", "/auth/facebook", id: "sign_in", :style => "font-weight:bold; font-size: 1.4em" %>
+									<%# end %>
 								</div>
 							</aside>
-						</div><!-- .header-wgt -->
+						</div><! .header-wgt -->
 					</div>
 				</div><!-- .pre-head -->
 
@@ -61,13 +62,14 @@
 									<% if current_user %>
 									<h1 style="font-size: 1.3em; margin: 0px">Signed in as <strong><%= current_user.name %></strong>!</h1>
 									<h1 style="font-size: 1.4em; margin: 0px; text-transform: uppercase"><a href="/questions/new" style="font-weight: bold">Post your question</a> | 
+									<%= link_to 'MY PROFILE', profile_path %> |
 									<%= link_to "Sign out", signout_path, id: "sign_out" %></h1>
 									<% else %>
 										<%= link_to "Sign in with Facebook & Start posting", "/auth/facebook", id: "sign_in", :style => "font-weight:bold; font-size: 1.4em" %>
 									<% end %>
 								</div>
 							</aside>
-							
+	
 						</div><!-- .header-wgt -->
 					</div><!-- .wrap < #header -->
 				</div><!-- #site-head -->

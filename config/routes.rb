@@ -61,11 +61,18 @@ Findsimilar::Application.routes.draw do
   
   resources :questions do
     collection do
-
     end
+  end
+ 
+  resources :answers do
+
   end
   
   
+  resources :votes do
+  end
+  match 'profile' => 'welcome#profile', :as => :profile
   match '/view/:id', to: 'welcome#view'
+  match 'update_answer', to: 'answers#update_answer',as: 'update_answer'
   root :to => "welcome#index"
 end

@@ -22,3 +22,10 @@ if (window.location.href.indexOf('#_=_') > 0) {
 }
 //End of workaround
 //************
+$(document).ready(function(){
+ $('.votes').click(function () {
+     $(".votes").val('Down');
+     });
+})
+
+  

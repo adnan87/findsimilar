@@ -10,19 +10,16 @@ class QuestionsController < ApplicationController
     end
   end
   
-  # GET /questions/1
-  # GET /questions/1.json
+
   def show
     @question = Question.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: @question }
     end
   end
-  
-  # GET /questions/new
-  # GET /questions/new.json
+
   def new
     @question = Question.new
     
@@ -32,8 +29,6 @@ class QuestionsController < ApplicationController
     end
   end
   
-  # POST /questions
-  # POST /questions.json
   def create
     @question = Question.new(params[:question])
     @question.user_id = session[:user_id]

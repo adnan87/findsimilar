@@ -14,7 +14,6 @@ Findsimilar::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -34,4 +33,27 @@ Findsimilar::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # ActionMailer Config
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    config.action_mailer.delivery_method = :smtp
+    # change to true to allow email to be sent during development
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.default :charset => "utf-8"
+    # config.action_mailer.smtp_settings = {
+    #   :address   => "smtp.mandrillapp.com",
+    #   :port      => 587,
+    #   :user_name => 'adnankh07@gmail.com'
+    #   :password  => 'a7d03c92-9f88-4b7a-8348-b971007ae41f'
+    # }
+    config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: "localhost:3000",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: 'adnankh07',
+      password: '9819503529'
+}
 end
