@@ -4,7 +4,7 @@
     <span class="comment-meta">Posted by <strong><%= answer.user.name %></strong>, at
       <time> <%= answer.updated_at %>
       </time>
-      <% if current_user %>
+      <%if current_user %>
         <% if answer.question.user_id == current_user.id %>
           <%= link_to  "Answer Accepted",update_answer_path(:answer_id => answer.id,:question_id => answer.question_id),:remote=>true %>    
         <% end %>
@@ -18,8 +18,8 @@
           <%= answer.comment %>
         </p>
         <div class = "comment_vote">
+         
           <%= link_to "vote up", votes_path(:answer_id => answer.id, :is_vote => true), :method => "post", :remote => true, :class => "comment_vote" %>
-          <%= link_to 'Buy', url_path(:question_id => answer.question_id) %>
         </div>
       </div>
     </div>

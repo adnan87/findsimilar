@@ -31,6 +31,7 @@ class WelcomeController < ApplicationController
       format.json { render json: @question }
     end
   end
+  
   def url
     @question = Question.find(params[:question_id])
     logger.debug "question_id is #{@question}"

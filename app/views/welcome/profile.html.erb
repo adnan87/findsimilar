@@ -34,6 +34,17 @@
 						</li>
 						<li>
 							<span> <h4>Recent Answers </h4></span>
+							<% @answers.each do |com| %>
+								<div class="answer-recent">
+									<div>
+										<span style="word-wrap: break-word;"><%= com.comment %></span><br/>
+										
+										<span class="comment-meta">Posted by <strong><%= com.user.name %></strong>
+      									<time> <%= time_ago_in_words(com.updated_at) %> ago</time></span>
+									</div>
+									
+								</div>
+							<% end %>
 							
 						</li>
 					</ul>
@@ -44,3 +55,10 @@
 	
 	<%= render :partial => 'questionlist' %>
 </div>
+<script>
+$(".answer-recent").hover(function() { // mouseenter
+  $(this).addClass("answer-hover");
+}, function() { // mouseleave 
+  $(this).removeClass("answer-hover");
+});
+</script>

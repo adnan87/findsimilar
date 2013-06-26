@@ -38,8 +38,9 @@ class AnswersController < ApplicationController
 
   # def update_answer
   #   @question = Question.find(params[:question_id])
+  #   @answers = Answer.where("question_id = ?", @question).order("created_at DESC")
   #   @users = session[:user_id]
-  #   @user = User.find(@users)
+  #   @user = User.find(@users) if @users.presence
   #   logger.debug "user id #{@user}"
   #   @answer = @question.answers.where("id=?",params[:answer_id])
 
@@ -55,33 +56,44 @@ class AnswersController < ApplicationController
   #     end
   #     @answer.first.save
   #     logger.debug "points are #{@answer_points}"
-  #     PostMailer.welcome_email(@user).deliver
-  #     sds
-  #     format.js { render :layout => false }
+  #     if current_user.present?
+  #       logger.debug "Inside user present"
+  #       @url = "#{request.protocol}#{request.host_with_port}"
+  #     else
+  #       logger.debug "Inside user not present"
+  #       @url = "#{request.protocol}#{request.host_with_port}"
+  #       logger.debug "url is #{request.protocol}#{request.host_with_port}"
+  #    end
+  #     PostMailer.welcome_email(@user,@url).deliver if @user.presence
+  #     #format.js { render :layout => false }
   #     format.html { redirect_to :back , notice: 'Answer was successfully posted.' }
   #  end
 
-  # end
+  #end
 
   def update_answer 
-  @question = Question.find(params[:question_id]) 
-  @users = session[:user_id]
-  @user = User.find(@users)
-  @answer = @question.answers.where("id=?",params[:answer_id]) 
-  respond_to do |format| 
-   if (@answer.first.is_accepted != true) 
-     @answer.first.is_accepted = true
-      @answer.first.save 
-      @user = User.find(@answer.first.user_id) 
-      total_points = @user.points + 25 
-      @user.points = total_points 
-      @user.save 
-      PostMailer.welcome_email(@user).deliver
-    end 
-      #format.js { render :layout => false } 
+    @question = Question.find(params[:question_id]) 
+    @answers = Answer.where("question_id = ?", @question).order("created_at DESC")
+    @users = session[:user_id]
+    @user = User.find(@users) if @users.presence
+    @answer = @question.answers.where("id=?",params[:answer_id]) 
+    respond_to do |format| 
+      if (@answer.first.is_accepted != true) 
+        logger.debug "Inside is_accepted"
+        @answer.first.is_accepted = true
+        @user = User.find(@answer.first.user_id) 
+        @points = 0
+        total_points = @points + 25 if @points
+        @user.points = total_points 
+        @user.save 
+        @answer.first.save
+        if current_user
+          @url = "#{request.protocol}#{request.host_with_port}"
+        end 
+      end
+      PostMailer.welcome_email(@user,@url).deliver if @user.presence
+      #format.js { render :layout => false , notice: 'Answer was successfully posted.'}
       format.html { redirect_to :back , notice: 'Answer was successfully posted.' } 
-    end 
-  end
-  
-
+    end  
+  end 
 end

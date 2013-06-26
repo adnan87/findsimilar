@@ -11,3 +11,5 @@
  *= require_self
  *= require_tree .
  */
+.answer-recent{ color: #494944; margin-bottom: 5px; height: 50px; width: 100%;}
+.answer-hover { background-color: #EBEBE0 !important; }
