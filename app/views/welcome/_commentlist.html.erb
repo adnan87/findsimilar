@@ -1,7 +1,7 @@
 <% @answers.each do |answer| %>
   <ol id="comment-list" class="group">
   <li class="comment">
-    <span class="comment-meta">Posted by <strong><%= answer.user.name %></strong>, at
+    <span class="comment-meta">Posted by <strong><%= answer.user.name if answer.user %></strong>, at
       <time> <%= answer.updated_at %>
       </time>
       <%if current_user %>
@@ -18,8 +18,10 @@
           <%= answer.comment %>
         </p>
         <div class = "comment_vote">
-         
           <%= link_to "vote up", votes_path(:answer_id => answer.id, :is_vote => true), :method => "post", :remote => true, :class => "comment_vote" %>
+          <div id='fb-root'></div>
+          <%= link_to "Post", @url,:class => "comment-post" %>
+          <p id='msg'></p>
         </div>
       </div>
     </div>

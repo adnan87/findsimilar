@@ -14,7 +14,14 @@ class WelcomeController < ApplicationController
     @answer = @question.answers.new
     @answers = Answer.where("question_id = ?", @question.id).order("created_at DESC")
     @vote = @answer.votes.new
-    
+    @url = "https://www.facebook.com/dialog/feed?
+  app_id=458358780877780&
+  link=http://localhost:3000/&
+  picture=http://fbrell.com/f8.jpg&
+  name=Find%20Similar&
+  caption=Post%20Questionn&
+  description=#{@question.question}&
+  redirect_uri=https://mighty-lowlands-6381.herokuapp.com/"
     respond_to do |format|
       format.html
       format.json { render json: @question }
@@ -24,6 +31,7 @@ class WelcomeController < ApplicationController
   def profile
     @questions = Question.where("user_id=?",current_user.id)
     @answers = Answer.where("user_id=?",current_user.id)
+    @user = current_user.id
     @accepted_answers = Answer.where("user_id=? and is_accepted=?",current_user.id,true)
 
      respond_to do |format|

@@ -25,8 +25,15 @@ class AnswersController < ApplicationController
     logger.debug "question is"+ params[:answer][:question_id]
     @answer = @question.answers.new(params[:answer])
     @answer.user_id = session[:user_id]
+    @users = @question.user_id
+    @user = User.find(@users) if @users.presence
     respond_to do |format|
       if @answer.save
+        @user_name = @answer.user.name if @answer.user
+        @user_response = @answer.comment
+        @default_url = "#{request.protocol}#{request.host_with_port}"
+        @url = "#{@default_url}/view/#{@answer.question_id}"
+        PostMailer.response_email(@user,@user_name,@user_response,@url).deliver if @user.presence
         format.html { redirect_to root_url, notice: 'Answer was successfully posted.' }
         format.json { render json: @answer, status: :created, location: @answer }
       else
@@ -79,7 +86,6 @@ class AnswersController < ApplicationController
     @answer = @question.answers.where("id=?",params[:answer_id]) 
     respond_to do |format| 
       if (@answer.first.is_accepted != true) 
-        logger.debug "Inside is_accepted"
         @answer.first.is_accepted = true
         @user = User.find(@answer.first.user_id) 
         @points = 0
@@ -91,9 +97,9 @@ class AnswersController < ApplicationController
           @url = "#{request.protocol}#{request.host_with_port}"
         end 
       end
-      PostMailer.welcome_email(@user,@url).deliver if @user.presence
-      #format.js { render :layout => false , notice: 'Answer was successfully posted.'}
-      format.html { redirect_to :back , notice: 'Answer was successfully posted.' } 
+      PostMailer.welcome_email(@user).deliver if @user.presence
+      format.js { render :layout => false , notice: 'Answer was successfully posted.'}
+      #format.html { redirect_to :back , notice: 'Answer was successfully posted.' } 
     end  
   end 
 end
