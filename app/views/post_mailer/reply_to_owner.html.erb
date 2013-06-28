@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>User <b>Hello <%=  @user.name %></b> </h3>
+    
+    <p>
+      There has been no response to your question posted on : <%= @sent_at %>
+    </p>
+    <p><%= link_to ' Find the Question Asked', @url %></p>
+    <p>Thanks and have a great day ahead!</p>
+  </body>
+</html>

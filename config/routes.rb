@@ -74,5 +74,6 @@ Findsimilar::Application.routes.draw do
   match 'profile' => 'welcome#profile', :as => :profile
   match '/view/:id', to: 'welcome#view'
   match 'update_answer', to: 'answers#update_answer',as: 'update_answer'
+  match 'post_question', to: 'welcome#post_question', as: 'post_question'
   root :to => "welcome#index"
 end

@@ -1,0 +1,28 @@
+      FB.init({appId: "670347169648397", status: true, cookie: true});
+          
+           $('.post-comment').click(function(){
+              //var id = $('.post-comment').attr('id');
+              //alert('hello');
+              postToFeed();
+            });  
+
+      function postToFeed() {
+
+        // calling the API ...
+        var obj = {
+        
+          method: 'feed',
+          redirect_uri: 'localhost:3000',
+          link: 'localhost:3000/',
+          picture: 'http://fbrell.com/f8.jpg',
+          name: 'Find Similar',
+          caption: 'Post Question',
+          description: '<%= @question_name %>'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj);
+      }

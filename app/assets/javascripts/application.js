@@ -26,36 +26,13 @@ $(document).ready(function(){
  $('.votes').click(function () {
      $(".votes").val('Down');
      });
+
+ function abc()
+{
+    alert("inside function");
+}
  
 
- $('.comment-post').click(function (){
- 	//alert('hello');
- 	//window.location.href = 'https://www.facebook.com/dialog/feed? app_id=670347169648397&link=https://localhost:3000/&picture=http://fbrell.com/f8.jpg&name=Facebook%20Dialogs&caption=Reference%20Documentation&description=Post Question&redirect_uri=https://mighty-lowlands-6381.herokuapp.com/' 	
- 	//return false;
- // 	//alert('hello');
- // 	FB.init({appId: "670347169648397", status: true, cookie: true});
-
- //      function postToFeed() {
-
- //        // calling the API ...
- //        var obj = {
- //          method: 'feed',
- //          redirect_uri: 'localhost:3000',
- //          link: 'https://developers.facebook.com/docs/reference/dialogs/',
- //          picture: 'http://fbrell.com/f8.jpg',
- //          name: 'Facebook Dialogs',
- //          caption: 'Reference Documentation',
- //          description: 'Using Dialogs to interact with people.'
- //        };
-
- //        function callback(response) {
- //          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
- //        }
-
- //        FB.ui(obj, callback);
- //      }
-
- })
 })
 
   

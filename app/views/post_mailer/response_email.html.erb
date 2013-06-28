@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>User <b><%= @user_name %></b> answered to your question </h3>
+    
+    <p>
+      Following was the response to your question: <%= @user_response %>
+    </p>
+    <p><%= link_to ' Find the Question Asked', @url %></p>
+    <p>Thanks and have a great day ahead!</p>
+  </body>
+</html>

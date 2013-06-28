@@ -19,9 +19,6 @@
         </p>
         <div class = "comment_vote">
           <%= link_to "vote up", votes_path(:answer_id => answer.id, :is_vote => true), :method => "post", :remote => true, :class => "comment_vote" %>
-          <div id='fb-root'></div>
-          <%= link_to "Post", @url,:class => "comment-post" %>
-          <p id='msg'></p>
         </div>
       </div>
     </div>

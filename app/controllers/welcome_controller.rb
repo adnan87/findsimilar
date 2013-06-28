@@ -2,6 +2,8 @@ class WelcomeController < ApplicationController
   #GET index 
   def index
     @questions = Question.find(:all)
+    @question = Question.find(params[:name]).question if params[:question_id]
+    logger.debug "question is #{@question}"
     respond_to do |format|
       format.html 
       format.json { render json: @questions }
@@ -14,14 +16,6 @@ class WelcomeController < ApplicationController
     @answer = @question.answers.new
     @answers = Answer.where("question_id = ?", @question.id).order("created_at DESC")
     @vote = @answer.votes.new
-    @url = "https://www.facebook.com/dialog/feed?
-  app_id=458358780877780&
-  link=http://localhost:3000/&
-  picture=http://fbrell.com/f8.jpg&
-  name=Find%20Similar&
-  caption=Post%20Questionn&
-  description=#{@question.question}&
-  redirect_uri=https://mighty-lowlands-6381.herokuapp.com/"
     respond_to do |format|
       format.html
       format.json { render json: @question }
@@ -40,14 +34,12 @@ class WelcomeController < ApplicationController
     end
   end
   
-  def url
-    @question = Question.find(params[:question_id])
-    logger.debug "question_id is #{@question}"
-    @url = Answer.select("url,user_id,question_id").where("user_id=? and question_id=?",current_user,@question)
-    @final_url = @url.first.url
-    logger.debug "url is #{@url.first.url}"
+  def post_question
+    @question = Question.find(params[:id])
+    @question_name = @question.question
+
     respond_to do |format|
-        format.html { redirect_to @final_url and return}
+        format.js { render :layout => false }
       end
   end
 
