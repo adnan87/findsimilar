@@ -54,6 +54,28 @@
 	</article><!-- #intro -->
 	
 	<%= render :partial => 'questionlist' %>
+
+	<div id="entry-listing" class="group" >
+	<article class="entry box isotope-item" id="intro" style="float: right;" >
+		<div class="entry-content-cnt" >
+			<aside class="widget widget_ci_about_widget group">
+				<div class="widget_about group">
+				<p>
+				<h5> followers: <%= current_user.followers_by_type_count('User') %></h5>
+					<% current_user.followers_by_type('User').each do |f| %>
+					<%= f.name %>
+				<% end %>
+				<h5> following: <%= current_user.following_by_type_count('User') %>  users</h5>
+					<% current_user.following_by_type('User').each do |f| %>
+					<br><%= f.name %></br>
+					<% end %>
+				<h5> following: <%= current_user.following_by_type_count('Question') %> questions</h5>
+				</p>
+			</div>
+			</aside>			
+		</div>
+	</article><!-- #intro -->
+</div>
 </div>
 <script>
 $(".answer-recent").hover(function() { // mouseenter

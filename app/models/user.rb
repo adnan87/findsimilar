@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :votes
+  has_many :likes
+  acts_as_followable
+  acts_as_follower
   
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

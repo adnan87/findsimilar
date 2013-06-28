@@ -4,5 +4,6 @@ class Question < ActiveRecord::Base
   belongs_to :user
   mount_uploader :image, QuestionUploader
   has_many :answers
+  acts_as_followable
   
 end

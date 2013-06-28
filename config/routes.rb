@@ -68,12 +68,17 @@ Findsimilar::Application.routes.draw do
 
   end
   
-  
+  resources :likes do
+  end
+
   resources :votes do
   end
   match 'profile' => 'welcome#profile', :as => :profile
   match '/view/:id', to: 'welcome#view'
   match 'update_answer', to: 'answers#update_answer',as: 'update_answer'
   match 'post_question', to: 'welcome#post_question', as: 'post_question'
+  match 'update_like_status', to: 'likes#update_like_status', as: 'update_like_status'
+  match 'follow_user_path', to: 'welcome#follow_user', as: 'follow_user'
+  match 'follow_question_path', to: 'welcome#follow_question', as: 'follow_question'
   root :to => "welcome#index"
 end

@@ -1,0 +1,38 @@
+		<article class="entry box format-image">
+			<div class="entry-intro">
+			<h1><%= @question.question %></h1>
+					<span class="entry-meta">Posted by <strong>
+						<vmasto>
+							<%= @question.user.name%>
+						</strong>, at
+						<time datetime="2012-08-07">
+							<%= @question.created_at%>
+							<% if current_user %>
+						<%  follower = Follow.find_by_follower_id_and_followable_id(current_user.id, @question.user_id) rescue nil %>
+						<% if follower.present? %>
+						<h5>You are following this user</h5>
+						<% else %>
+						<% if @question.user_id != current_user.id %>
+						</time><%= link_to "follow User", follow_user_path(:question_id => @question.id), :remote => true%></span>
+						<% end %>
+						<% end %>
+						<% end %>
+					<a class="single-heart-this" href="#" title="Love this."> <span class="heart-icon"></span> <span class="heart-no">16</span></a>
+					<!-- .entry-intro -->
+			
+			</div>
+			
+			<figure class="entry-image">
+				<a href="#" data-lightbox="fancybox"><img src="<%= @question.image.medium %>" alt="<%= @question.question %>"></a>
+			</figure>
+			<div class="entry-intro">
+				<h1>Price : <%= number_to_currency(@question.price)%></h1>
+				<h2>Description</h2>
+				<%= @question.description%>
+
+				<p>
+					<strong>more details check </strong><a href="#"><%= @question.url%></a>
+				</p>
+			</div>
+			<div class="social-share"></div>
+		</article>

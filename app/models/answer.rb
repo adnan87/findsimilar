@@ -4,6 +4,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   belongs_to :user
   has_many :votes
+  has_many :likes
   mount_uploader :image, AnswerUploader
   before_save :add_url_protocol
   validates_uniqueness_of :question_id, :scope => :user_id

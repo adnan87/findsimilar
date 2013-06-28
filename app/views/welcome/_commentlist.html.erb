@@ -6,7 +6,7 @@
       </time>
       <%if current_user %>
         <% if answer.question.user_id == current_user.id %>
-          <%= link_to  "Answer Accepted",update_answer_path(:answer_id => answer.id,:question_id => answer.question_id),:remote=>true %>    
+          <%= link_to  "Accept Answer",update_answer_path(:answer_id => answer.id,:question_id => answer.question_id),:class=>"answer-comment",:remote=>true %>    
         <% end %>
       <% end %>
     </span>
@@ -18,7 +18,20 @@
           <%= answer.comment %>
         </p>
         <div class = "comment_vote">
+          <%= link_to "Buy this", answer.url,  :TARGET => '_blank' %>
           <%= link_to "vote up", votes_path(:answer_id => answer.id, :is_vote => true), :method => "post", :remote => true, :class => "comment_vote" %>
+          <% if current_user %>
+            <%  like = Like.find_by_user_id_and_answer_id(current_user.id, answer.id) rescue nil %>
+             <%  if like.present? and like.is_like == true %>
+                <%= link_to "Unlike", update_like_status_path(:answer_id => answer.id, :user_id => current_user.id), :remote => true %>
+              <% else %>
+              <%  if answer.likes.present? %>
+                <%= link_to "Like", update_like_status_path(:answer_id => answer.id, :user_id => current_user.id), :remote => true %>
+              <% else %>
+              <%= link_to "Like", likes_path(:answer_id => answer.id, :user_id => current_user.id), :method => "post", :remote => true %>
+            <% end %>
+          <% end %>
+        <% end %>
         </div>
       </div>
     </div>
@@ -27,6 +40,9 @@
 
 <script>
 $('.comment_vote').click(function(){
+  $(this).css('color','black');
+});
+$('.answer-comment').click(function(){
   $(this).css('color','black');
 });
 </script>

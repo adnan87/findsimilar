@@ -33,7 +33,7 @@ gem 'carrierwave'
 gem 'fog'
 gem "hominid"
 gem 'whenever'
-gem "koala"
+gem "acts_as_follower"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

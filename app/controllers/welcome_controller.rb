@@ -43,4 +43,24 @@ class WelcomeController < ApplicationController
       end
   end
 
+  def follow_user
+    @question = Question.find(params[:question_id])
+    @follower = current_user
+    @followable = User.find(@question.user_id)
+    @follower.follow(@followable)
+    respond_to do |format|
+      format.js { render :layout => false  }
+    end
+  end
+
+  def follow_question
+    @questions = Question.find(:all)
+    @question = Question.find(params[:question_id])
+    @follower = current_user
+    @follower.follow(@question)
+    respond_to do |format|
+      format.js { render :layout => false  }
+    end
+  end
+
 end

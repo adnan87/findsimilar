@@ -1,34 +1,7 @@
 <div class="inner-container group">
 	<div class="box-hold group">
-		<article class="entry box format-image">
-			<div class="entry-intro">
-					<h1><%= @question.question %></h1><span class="entry-meta">Posted by <strong>
-						<vmasto>
-							<%= @question.user.name%>
-						</strong>, at
-						<time datetime="2012-08-07">
-							<%= @question.created_at%>
-						</time></span>
-					<a class="single-heart-this" href="#" title="Love this."> <span class="heart-icon"></span> <span class="heart-no">16</span></a>
-					<!-- .entry-intro -->
-			
-			</div>
-			
-			<figure class="entry-image">
-				<a href="#" data-lightbox="fancybox"><img src="<%= @question.image.medium %>" alt="<%= @question.question %>"></a>
-			</figure>
-			<div class="entry-intro">
-				<h1>Price : <%= number_to_currency(@question.price)%></h1>
-				<h2>Description</h2>
-				<%= @question.description%>
-
-				<p>
-					<strong>more details check </strong><a href="#"><%= @question.url%></a>
-				</p>
-			</div>
-			<div class="social-share"></div>
-		</article>
-
+		
+		<%= render :partial => "question" %>
 	</div><!-- .box-hold -->
 	<div class="box-hold">
 		<% if(@question.user_id != session[:user_id]) %>
