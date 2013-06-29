@@ -43,61 +43,42 @@ class AnswersController < ApplicationController
     end
   end
 
-  # def update_answer
-  #   @question = Question.find(params[:question_id])
-  #   @answers = Answer.where("question_id = ?", @question).order("created_at DESC")
-  #   @users = session[:user_id]
-  #   @user = User.find(@users) if @users.presence
-  #   logger.debug "user id #{@user}"
-  #   @answer = @question.answers.where("id=?",params[:answer_id])
-
-  #   respond_to do |format|
-  #     @answer.first.is_accepted =  true
-  #     @answer_points =  Answer.select("*").where("user_id = ?",1).order("is_accepted DESC").first.points
-  #     logger.debug "points are #{@answer_points}"
-  #     points= 0
-  #     if @answer_points.nil?
-  #       @answer.first.points = points + 25 
-  #     else
-  #       @answer.first.points = @answer_points + 25
-  #     end
-  #     @answer.first.save
-  #     logger.debug "points are #{@answer_points}"
-  #     if current_user.present?
-  #       logger.debug "Inside user present"
-  #       @url = "#{request.protocol}#{request.host_with_port}"
-  #     else
-  #       logger.debug "Inside user not present"
-  #       @url = "#{request.protocol}#{request.host_with_port}"
-  #       logger.debug "url is #{request.protocol}#{request.host_with_port}"
-  #    end
-  #     PostMailer.welcome_email(@user,@url).deliver if @user.presence
-  #     #format.js { render :layout => false }
-  #     format.html { redirect_to :back , notice: 'Answer was successfully posted.' }
-  #  end
-
-  #end
-
+# def update_answer
+#     @question = Question.find(params[:question_id])
+#     @answer = @question.answers.where("id=?",params[:answer_id])
+#     @user_id = session[:user_id]
+#     @user = User.find(@user_id) if @user_id.presence
+#     respond_to do |format|
+#       if (@answer.first.is_accepted != true)
+#         @answer.first.is_accepted =  true
+#         @answer.first.save
+#         @user_p = User.find(@answer.first.user_id)
+#         total_points = @user_p.points + 25
+#         @user_p.points = total_points
+#         @user_p.save
+#       end
+#       format.html { redirect_to :back , notice: 'Answer was successfully posted.' }
+#    end
+#   end
   def update_answer 
     @question = Question.find(params[:question_id]) 
     @answers = Answer.where("question_id = ?", @question).order("created_at DESC")
-    @users = session[:user_id]
-    @user = User.find(@users) if @users.presence
+    @user_id = session[:user_id]
+    @user = User.find(@user_id) if @user_id.presence
     @answer = @question.answers.where("id=?",params[:answer_id]) 
     respond_to do |format| 
       if (@answer.first.is_accepted != true) 
-        @answer.first.is_accepted = true
-        @user = User.find(@answer.first.user_id) 
-        @points = 0
-        total_points = @points + 25 if @points
-        @user.points = total_points 
-        @user.save 
+        @answer.first.is_accepted =  true
         @answer.first.save
+        @user_p = User.find(@answer.first.user_id)
+        total_points = @user_p.points + 25
+        @user_p.points = total_points
+        @user_p.save
         if current_user
           @url = "#{request.protocol}#{request.host_with_port}"
         end 
       end
-      PostMailer.welcome_email(@user).deliver if @user.presence
+      PostMailer.welcome_email(@user,@url).deliver if @user.presence
       format.js { render :layout => false , notice: 'Answer was successfully posted.'}
       #format.html { redirect_to :back , notice: 'Answer was successfully posted.' } 
     end  

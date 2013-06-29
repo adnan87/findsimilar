@@ -11,26 +11,27 @@
 		<h1><a href="/view/<%= question.id %>" title="<%= question.question %>"><%= question.question %></a></h1>
 		<p style="font-style: italic; text-align: right;margin-bottom: 2px">Posted by <%= question.user.name %></p>
 		<h2 style="text-align: right"><a href="#" title="">Price willing <%= number_to_currency(question.price) %></a></h2>
-		<%#= link_to "Post","#",:class => "comment-post" %>
     <div id="comment">
-    <% if question.user_id == current_user.id %>
-      <%= link_to 'Post Question on Facebook', post_question_path(:id=>question.id),:class=>'post-comment',:remote=>true %>
-    <% end %>
+      <% if current_user %>
+        <% if question.user_id == current_user.id %>
+          <%= link_to 'Post Question on Facebook', post_question_path(:id=>question.id),:class=>'post-comment',:remote=>true %>
+        <% end %>
+      <% end %>
     </div>
 		<!-- <p><a onclick='postToFeed(); return false; name="<%= question.id %>"'>Post to Feed</a></p> -->
     	<!-- <p id='msg'></p> -->
-		 <div id='fb-root'></div>
+		<div id='fb-root'></div>
 		<div class="entry-meta group">
 			<a class="comments-no" href="#">4</a><a data-post-id="<%= question.id %>" class="heart-this loved" href="#" title="You love this."><span class="heart-no">7</span></a><a class="entry-permalink" href="#" title=""><%= question.question %></a>
       <%if current_user %>
-      <%  follower = Follow.find_by_follower_id_and_followable_id(current_user.id, question.id) rescue nil %>
-      <% if follower.present? %>
-      <h5> followed </h5>
-      <% else %>
-      <% if current_user.id != question.user_id %>
-      <%= link_to " follow question", follow_question_path(:question_id => question.id), :remote => true %>
-      <% end %>
-      <% end %>
+        <% follower = Follow.find_by_follower_id_and_followable_id(current_user.id, question.id) rescue nil %>
+        <% if follower.present? %>
+          <h5> followed </h5>
+        <% else %>
+          <% if current_user.id != question.user_id %>
+            <%= link_to " follow question", follow_question_path(:question_id => question.id), :remote => true %>
+          <% end %>
+        <% end %>
       <% end %>
 		</div>
 	</div>

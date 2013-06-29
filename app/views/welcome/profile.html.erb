@@ -3,20 +3,14 @@
 		<div class="entry-content-cnt">
 			<aside class="widget widget_ci_about_widget group">
 				<div class="widget_about group">
-					<!--<img alt="about me" class="alignleft" src="images/dummy/me.jpg"> -->
 					<p>
 						<%= image_tag current_user.image,:class=>'image-width' %>
 						<h5 class="widget-title" style="margin-top: -23px;">Hi!! <%= current_user.name %></h5>
 					</p>
-
 				</div>
-
 			</aside>
-
 			<aside class="widget widget_ci_twitter_widget group">
-				<h5 class="widget-title" style="margin-top: -23px;">Total Points: <%#= sequence.reel_number.presence ? sequence.reel_number : "-" %>
-					<%= current_user.points.presence ? current_user.points : "0" %></h5>
-
+				<h5 class="widget-title" style="margin-top: -23px;">Total Points: <%= current_user.points.presence ? current_user.points : "0" %></h5>
 				<div id="twitter_update_list">
 					<ul>
 						<li>
@@ -34,18 +28,20 @@
 						</li>
 						<li>
 							<span> <h4>Recent Answers </h4></span>
-							<% @answers.each do |com| %>
+							<% @answers.each do |answer_comment| %>
 								<div class="answer-recent">
 									<div>
-										<span style="word-wrap: break-word;"><%= com.comment %></span><br/>
-										
-										<span class="comment-meta">Posted by <strong><%= com.user.name %></strong>
-      									<time> <%= time_ago_in_words(com.updated_at) %> ago</time></span>
+										<span style="word-wrap: break-word;">
+											<%= answer_comment.comment %>
+										</span><br/>
+										<span class="comment-meta">Posted by <strong><%= answer_comment.user.name %></strong>
+      									<time> 
+      										<%= time_ago_in_words(answer_comment.updated_at) %> ago
+      									</time>
+      							</span>
 									</div>
-									
 								</div>
 							<% end %>
-							
 						</li>
 					</ul>
 				</div>
@@ -56,31 +52,31 @@
 	<%= render :partial => 'questionlist' %>
 
 	<div id="entry-listing" class="group" >
-	<article class="entry box isotope-item" id="intro" style="float: right;" >
-		<div class="entry-content-cnt" >
-			<aside class="widget widget_ci_about_widget group">
-				<div class="widget_about group">
-				<p>
-				<h5> followers: <%= current_user.followers_by_type_count('User') %></h5>
-					<% current_user.followers_by_type('User').each do |f| %>
-					<%= f.name %>
-				<% end %>
-				<h5> following: <%= current_user.following_by_type_count('User') %>  users</h5>
-					<% current_user.following_by_type('User').each do |f| %>
-					<br><%= f.name %></br>
-					<% end %>
-				<h5> following: <%= current_user.following_by_type_count('Question') %> questions</h5>
-				</p>
+		<article class="entry box isotope-item" id="intro" style="float: right;" >
+			<div class="entry-content-cnt" >
+				<aside class="widget widget_ci_about_widget group">
+					<div class="widget_about group">
+						<p>
+							<h5> followers: <%= current_user.followers_by_type_count('User') %></h5>
+							<% current_user.followers_by_type('User').each do |follower| %>
+								<%= follower.name %>
+							<% end %>
+							<h5> following: <%= current_user.following_by_type_count('User') %>  users</h5>
+							<% current_user.following_by_type('User').each do |following| %>
+								<br><%= following.name %></br>
+							<% end %>
+							<h5> following: <%= current_user.following_by_type_count('Question') %> questions</h5>
+						</p>
+					</div>
+				</aside>			
 			</div>
-			</aside>			
-		</div>
-	</article><!-- #intro -->
-</div>
+		</article><!-- #intro -->
+	</div>
 </div>
 <script>
-$(".answer-recent").hover(function() { // mouseenter
-  $(this).addClass("answer-hover");
-}, function() { // mouseleave 
-  $(this).removeClass("answer-hover");
-});
+	$(".answer-recent").hover(function() { // mouseenter
+	  $(this).addClass("answer-hover");
+	}, function() { // mouseleave 
+	  $(this).removeClass("answer-hover");
+	});
 </script>

@@ -14,7 +14,12 @@ class WelcomeController < ApplicationController
   def view
     @question = Question.find(params[:id])
     @answer = @question.answers.new
-    @answers = Answer.where("question_id = ?", @question.id).order("created_at DESC")
+    #@answers = Answer.where("question_id = ?", @question.id).order("created_at DESC")
+    @answers = Answer
+      .select("answers.*,questions.user_id as user_id")
+      .joins(:question).where("question_id = ?", @question.id)
+      .order("answers.created_at DESC")
+      
     @vote = @answer.votes.new
     respond_to do |format|
       format.html
@@ -37,6 +42,7 @@ class WelcomeController < ApplicationController
   def post_question
     @question = Question.find(params[:id])
     @question_name = @question.question
+    @question_image = @question.image.thumb
 
     respond_to do |format|
         format.js { render :layout => false }

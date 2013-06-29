@@ -1,8 +1,6 @@
       FB.init({appId: "670347169648397", status: true, cookie: true});
           
            $('.post-comment').click(function(){
-              //var id = $('.post-comment').attr('id');
-              //alert('hello');
               postToFeed();
             });  
 
@@ -14,7 +12,7 @@
           method: 'feed',
           redirect_uri: 'localhost:3000',
           link: 'localhost:3000/',
-          picture: 'http://fbrell.com/f8.jpg',
+          picture: '<%= @question_image %>',
           name: 'Find Similar',
           caption: 'Post Question',
           description: '<%= @question_name %>'

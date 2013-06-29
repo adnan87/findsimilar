@@ -1,64 +1,58 @@
 <h1>Post your comment </h1>
 <%= form_for @answer, :html => { :class => 'answerform', :multipart => true } do |f| %>
 
-<fieldset>
-	<div style="margin: 0 auto;width: 256px">
-	<p>
-		<!--<div style="background: url('/assets/upload-256x256.png'); width: 256px; height: 100px; overflow: hidden;margin: 0 auto;" onclick="$('answer_image').click();"> -->
-			<img id="img_upload_image" src="/assets/upload-256x256.png/" style="cursor: pointer"/>
-			<%= f.file_field :image, :accept=> "image/*",  :style => "opacity:0;-moz-opacity:0 ;filter:alpha(opacity: 0);", :onchange => "showPreview(this);"  %>
-		<!-- </div> -->
-	</p>
-	</div>
-</fieldset>
-<fieldset>
-	<p>
-		<div style="margin: 0 auto;width: 256px"><img id="img_prev" src="/assets/256x256-preview.png" alt="your image" />
+	<fieldset>
+		<div style="margin: 0 auto;width: 256px">
+		<p>
+			<!--<div style="background: url('/assets/upload-256x256.png'); width: 256px; height: 100px; overflow: hidden;margin: 0 auto;" onclick="$('answer_image').click();"> -->
+				<img id="img_upload_image" src="/assets/upload-256x256.png/" style="cursor: pointer"/>
+				<%= f.file_field :image, :accept=> "image/*",  :style => "opacity:0;-moz-opacity:0 ;filter:alpha(opacity: 0);", :onchange => "showPreview(this);"  %>
+			<!-- </div> -->
+		</p>
 		</div>
-	</p>
-</fieldset>
- <%= f.hidden_field :question_id %>
-<fieldset class="group">
-	<p>
-		<%= f.text_area :comment, :cols => 60, :rows => 5, :placeholder => "Answer"%>
-	</p>
+	</fieldset>
+	<fieldset>
+		<p>
+			<div style="margin: 0 auto;width: 256px"><img id="img_prev" src="/assets/256x256-preview.png" alt="your image" />
+			</div>
+		</p>
+	</fieldset>
+	 <%= f.hidden_field :question_id %>
+	<fieldset class="group">
+		<p>
+			<%= f.text_area :comment, :cols => 60, :rows => 5, :placeholder => "Answer"%>
+		</p>
 
 
-<fieldset>
-	<p>
-		<%= f.text_field :price, :placeholder => 'Price  in ($)' %>
-		<%= f.text_field :url, :placeholder => 'URL' %>
-	</p>
-</fieldset>
-</fieldset>
-<%= f.submit 'Post your comment' %>
+	<fieldset>
+		<p>
+			<%= f.text_field :price, :placeholder => 'Price  in ($)' %>
+			<%= f.text_field :url, :placeholder => 'URL' %>
+		</p>
+	</fieldset>
+	</fieldset>
+	<%= f.submit 'Post your comment' %>
 
-<script>
+	<script>
 
-	$('#img_upload_image').click(function() {
-	    $('#answer_image').click();
-	});
-	function showPreview(ele) {
+		$('#img_upload_image').click(function() {
+		    $('#answer_image').click();
+		});
+		function showPreview(ele) {
 
-		$('#img_prev').attr('src', ele.value);
-		;
-		// for IE
-
-		if (ele.files && ele.files[0]) {
-
-			var reader = new FileReader();
-
-			reader.onload = function(e) {
-				$('#img_prev').attr('src', e.target.result).width(256);
-				;
+			$('#img_prev').attr('src', ele.value);
+			;
+			// for IE
+			
+			if (ele.files && ele.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#img_prev').attr('src', e.target.result).width(256);
+					;
+				}
+				reader.readAsDataURL(ele.files[0]);
 			}
-
-			reader.readAsDataURL(ele.files[0]);
-
 		}
-
-	}
-
-</script>
+	</script>
 <% end %>
 

@@ -1,22 +1,19 @@
 <% @questions.each do |question| %>
-<article id="post-<%= question.id %>" class="category-people category-photography category-pretty-girls entry box format-image">
+	<article id="post-<%= question.id %>" class="category-people category-photography category-pretty-girls entry box format-image">
 
-	<div class="entry-content-cnt">
-		<div class="entry-content">
-			<a href="#" class="thumb" title="<%= question.question %>"><img src="<%= question.image.thumb %>" class="attachment-ci_listing_thumb" alt="<%= question.question %>" title="<%= question.question %>"></a>
+		<div class="entry-content-cnt">
+			<div class="entry-content">
+				<a href="#" class="thumb" title="<%= question.question %>"><img src="<%= question.image.thumb %>" class="attachment-ci_listing_thumb" alt="<%= question.question %>" title="<%= question.question %>"></a>
+			</div>
 		</div>
-	</div>
 
-	<div class="entry-desc">
-		<h1><a href="#" title="<%= question.question %>"><%= question.question %></a></h1>
-		<p style="font-style: italic; text-align: right;margin-bottom: 2px">Posted by <%= question.user.name %></p>
-		<h2 style="text-align: right"><a href="#" title="">Price willing <%= number_to_currency(question.price) %></a></h2>
-		<div class="entry-meta group">
-			<a class="comments-no" href="#">4</a><a data-post-id="<%= question.id %>" class="heart-this loved" href="#" title="You love this."><span class="heart-no">7</span></a><a class="entry-permalink" href="#" title=""><%= question.question %></a>
-         
-
+		<div class="entry-desc">
+			<h1><a href="#" title="<%= question.question %>"><%= question.question %></a></h1>
+			<p style="font-style: italic; text-align: right;margin-bottom: 2px">Posted by <%= question.user.name %></p>
+			<h2 style="text-align: right"><a href="#" title="">Price willing <%= number_to_currency(question.price) %></a></h2>
+			<div class="entry-meta group">
+				<a class="comments-no" href="#">4</a><a data-post-id="<%= question.id %>" class="heart-this loved" href="#" title="You love this."><span class="heart-no">7</span></a><a class="entry-permalink" href="#" title=""><%= question.question %></a>       
+			</div>
 		</div>
-		
-	</div>
-</article>
+	</article>
 <% end %>

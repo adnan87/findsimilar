@@ -1,22 +1,22 @@
 <div class="inner-container group">
 	<div class="box-hold group">
-		
 		<%= render :partial => "question" %>
 	</div><!-- .box-hold -->
 	<div class="box-hold">
-		<% if(@question.user_id != session[:user_id]) %>
-		<div class="box comment-form">
-			<div class="box-content">
- 	
-            <%= render :partial => "answers/comment" %>        
-			
-			</div>	
+		<% if(@question.user_id != current_user.id) %>
+			<div class="box comment-form">
+				<div class="box-content">
+		      <%= render :partial => "answers/comment" %>        
+				</div>	
+			</div>
+		<%end %>
+
+		<div class="box post-comments">
+  		<div class="box-content">
+    		<h1>Comments</h1>
+      	<%= render :partial => "commentlist" %>
+  		</div>
+		</div>
 	</div>
-	<%end %>
-	
-<div class="box post-comments">
-  <div class="box-content">
-    <h1>Comments</h1>
-      <%= render :partial => "commentlist" %>
-  </div>
 </div>
+
