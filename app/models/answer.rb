@@ -7,7 +7,7 @@ class Answer < ActiveRecord::Base
   has_many :likes
   mount_uploader :image, AnswerUploader
   before_save :add_url_protocol
-  validates_uniqueness_of :question_id, :scope => :user_id
+  #validates_uniqueness_of :question_id, :scope => :user_id
 
   def add_url_protocol
    unless self.url[/^http:\/\//] || self.url[/^https:\/\//]

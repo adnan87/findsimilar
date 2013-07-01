@@ -1,7 +1,12 @@
 class WelcomeController < ApplicationController
   #GET index 
   def index
-    @questions = Question.find(:all)
+    #@questions = Question.find(:all,:order => "created_at DESC")
+    @questions = Question
+                  .select("*")
+                  .order("created_at DESC")
+                  #.paginate(:page => params[:page],:per_page=>10)
+
     @question = Question.find(params[:name]).question if params[:question_id]
     logger.debug "question is #{@question}"
     respond_to do |format|
@@ -19,6 +24,7 @@ class WelcomeController < ApplicationController
       .select("answers.*,questions.user_id as user_id")
       .joins(:question).where("question_id = ?", @question.id)
       .order("answers.created_at DESC")
+      .paginate(:page => params[:page],:per_page=>10)
       
     @vote = @answer.votes.new
     respond_to do |format|

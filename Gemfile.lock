@@ -65,6 +65,9 @@ GEM
     hominid (3.0.5)
     httpauth (0.2.0)
     i18n (0.6.4)
+    infinitescrolling-rails (0.3.0)
+      jquery-rails
+      railties (> 3.1.0)
     journey (1.0.4)
     jquery-rails (3.0.0)
       railties (>= 3.0, < 5.0)
@@ -158,6 +161,7 @@ GEM
     whenever (0.8.2)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
+    will_paginate (3.0.4)
 
 PLATFORMS
   ruby
@@ -168,6 +172,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   fog
   hominid
+  infinitescrolling-rails
   jquery-rails
   less-rails
   omniauth-facebook (= 1.4.0)
@@ -178,3 +183,4 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   whenever
+  will_paginate (~> 3.0)
