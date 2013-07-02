@@ -5,7 +5,9 @@ class WelcomeController < ApplicationController
     @questions = Question
                   .select("*")
                   .order("created_at DESC")
-                  #.paginate(:page => params[:page],:per_page=>10)
+                  .paginate(:page => params[:page],:per_page=>10)
+    @page = @questions.current_page 
+    logger.debug "next page is #{@page}"
 
     @question = Question.find(params[:name]).question if params[:question_id]
     logger.debug "question is #{@question}"

@@ -1,5 +1,5 @@
-<%#= will_paginate @questions,:remote => true %>
-<div class="infinite-scroll">
+<%= will_paginate @questions,:remote => true,:class=>"apple_pagination"%>
+<%# javascript :defaults, 'endless_page' %>
 <% @questions.each do |question| %>
 
 <article id="post-<%= question.id %>" class="category-people category-photography category-pretty-girls entry box format-image">
@@ -40,9 +40,8 @@
 	</div>
 </article>
 <% end %>
-</div>
-<!--   -->
  <script>
+ 
 //  jQuery.ias({
 //     container : '.entry-list',
 //     item: '.category-people',
@@ -50,11 +49,15 @@
 //     //next: '.next-posts a',
 //     loader: '<%= image_tag ("ajax-loader.gif")  %>'
 // });
-$('.infinite-scroll').jscroll({
-    loadingHtml: '<%= image_tag ("ajax-loader.gif")  %>',
-    padding: 100,
-    autoTrigger: true,
-    //nextSelector: 'a.jscroll-next:last',
-    contentSelector: 'li'
-})
+// $('.infinite-scroll').pageless({ totalPages: 10
+//                        , //url: '/articles/'
+//                        , loaderMsg: 'Loading more results'
+//                        });
+ //$('#infinite-scroll').jscroll();//{
+//     loadingHtml: '<%= image_tag ("ajax-loader.gif")  %>',
+//     padding: 100,
+//     autoTrigger: true,
+//     nextSelector: 'a.jscroll-next:last',
+//     contentSelector: 'category-people'
+// })
  </script>

@@ -35,7 +35,7 @@ gem "hominid"
 gem 'whenever'
 gem "acts_as_follower"
 gem 'will_paginate', '~> 3.0'
-gem 'infinitescrolling-rails'
+gem 'spaghetti'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

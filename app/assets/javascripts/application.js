@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require infinitescrolling
 //= require_tree .
 
 //************
